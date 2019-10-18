@@ -9,6 +9,7 @@ export default function AdvancedListScreen(props) {
     return (
         <SafeAreaView style={s.layout}>
             <AdvancedList
+                enableGoTop={true}
                 loadDataFunc={(param)=>{
                     return new Promise((resolve)=>{
                         setTimeout(() => {

@@ -19,6 +19,12 @@ function HomeScreen(props) {
             <Text style={s.text} onPress={e=>{
                 props.navigation.navigate('AdvancedListScreen')
             }}>AdvancedListScreen</Text>
+            <Text style={s.text} onPress={e=>{
+                props.navigation.navigate('StorageScreen')
+            }}>StorageScreen</Text>
+            <Text style={s.text} onPress={e=>{
+                props.navigation.navigate('FileManagerScreen')
+            }}>FileManagerScreen</Text>
         </SafeAreaView>
     )
 }

@@ -8,27 +8,17 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons'
 
 export default function GoTop({
-    ref,
-    goTop,
+    showGoTop = false,
+    goTopFunc,
     style
 }) {
-    const [show, setShow] = useState(true);
-
-    function toggle(show) {
-        setShow(show);
-    }
-
-    if (!show) {
-        return;
+    if (!showGoTop) {
+        return null;
     }
     return (
         <TouchableOpacity activeOpacity={0.5} 
         onPress={()=>{
-            if (ref) {
-                ref.scrollToOffset({ x: 0, y: 0, animated: true });
-            } else {
-                goTop && goTop();
-            }
+            goTopFunc && goTopFunc();
         }} style={[styles.layout,style]}>
             <Icon name='ios-arrow-up' size={20} color="#222"/>
         </TouchableOpacity>

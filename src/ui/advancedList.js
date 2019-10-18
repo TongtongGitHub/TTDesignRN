@@ -20,7 +20,7 @@ function AdvancedFlatList({
     renderItemFunc,  //渲染item方法
     //额外配置
     listType = 0, //0: list 1: gallery
-    showGoTop = false, //是否显示返回顶部
+    enableGoTop = false, //是否显示返回顶部
     pullRefresh = true, //是否下拉刷新
     initialNumToRender = 8, //首屏渲染数量
     noResultView, // 无结果页面
@@ -38,10 +38,10 @@ function AdvancedFlatList({
     const [loading, setLoading] = useState(true);
     const [reachEnd, setReachEnd] = useState(false);
     const [listData, setListData] = useState([]);
-    const [refreshing, setRefreshing] = useState(false)
+    const [refreshing, setRefreshing] = useState(false);
+    const [showGoTop, setShowGoTop] = useState(false)
 
     let onEndReachedCalledDuringMomentum = false;
-    let goTopRef = useRef();
     let flatListRef = useRef();
     let pageNo = 0;
 
@@ -79,11 +79,11 @@ function AdvancedFlatList({
     }
 
     function onScrollFunc(e) {
-        if (showGoTop) {
+        if (enableGoTop) {
             if (e.nativeEvent.contentOffset.y > Dimensions.get('window').height) {
-                goTopRef.current.toggle(true);
+                setShowGoTop(true);
             } else {
-                goTopRef.current.toggle(false);
+                setShowGoTop(false);
             }
         }
     }
@@ -112,7 +112,7 @@ function AdvancedFlatList({
                 } else {
                     setReachEnd(true);
                 }
-                this.onEndReachedCalledDuringMomentum = true;
+                onEndReachedCalledDuringMomentum = true;
             }
         }
     }
@@ -180,8 +180,10 @@ function AdvancedFlatList({
                 }
                 {...config}
             />
-            {showGoTop &&
-                <GoTop ref={flatListRef}></GoTop>
+            {enableGoTop &&
+                <GoTop showGoTop={showGoTop} goTopFunc={()=>{
+                    flatListRef.current.scrollToOffset({ x: 0, y: 0, animated: true });
+                }}></GoTop>
             }
         </View>
     )
