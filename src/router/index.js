@@ -6,6 +6,7 @@ import ButtonScreen from '../demo/button'
 import AdvancedListScreen from '../demo/advancedList'
 import StorageScreen from '../demo/storage'
 import FileManagerScreen from '../demo/fileManager'
+import FormScreen from '../demo/form'
 
 const AppNavigator = createStackNavigator({
     HomeScreen: {
@@ -17,8 +18,14 @@ const AppNavigator = createStackNavigator({
     AdvancedListScreen: {
         screen: AdvancedListScreen
     },
+    StorageScreen: {
+        screen: StorageScreen
+    },
     FileManagerScreen: {
         screen: FileManagerScreen
+    },
+    FormScreen: {
+        screen: FormScreen
     }
 },{
     initialRouteName: 'HomeScreen'

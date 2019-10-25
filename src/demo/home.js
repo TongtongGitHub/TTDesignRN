@@ -25,6 +25,9 @@ function HomeScreen(props) {
             <Text style={s.text} onPress={e=>{
                 props.navigation.navigate('FileManagerScreen')
             }}>FileManagerScreen</Text>
+            <Text style={s.text} onPress={e=>{
+                props.navigation.navigate('FormScreen')
+            }}>FormScreen</Text>
         </SafeAreaView>
     )
 }

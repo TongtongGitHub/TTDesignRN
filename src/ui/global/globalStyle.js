@@ -9,6 +9,8 @@ export const Colors = {
     grayLL:'#CED3D9',
     grayLLL:'#DAE0E6',
     dark: '#222222',
+    darkL: '#555555',
+    darkLL: '#888888',
     white: '#ffffff',
     whiteD: '#f5f7fa'
 }
