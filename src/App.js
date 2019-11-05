@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,12 +7,16 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import TopView from './ui/topView'
 
 import AppContainer from './router'
 
 const App = () => {
   return (
-    <AppContainer></AppContainer>
+      <Fragment>
+            <AppContainer></AppContainer>
+            <TopView></TopView>
+      </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, forwardRef,useImperativeHandle} from 'react';
 import { 
     Text, 
     View, 
@@ -10,7 +10,7 @@ from 'react-native';
 import {Colors, BorderWidth} from '../global/globalStyle'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-export default function BasicInput({
+export default forwardRef(function BasicInput({
     required = false, //是否必填
     leftView,
     rightView,
@@ -29,9 +29,15 @@ export default function BasicInput({
     wrapStyle,
     borderStyle,
     inputStyle
-}) {
+},ref) {
     const [value, setValue] = useState(initValue);
     const [showClear, setShowClear] = useState(false);
+
+    useImperativeHandle(ref, () => ({
+        value: () => {
+            return value;
+        }
+      }));
 
     // fixed iphone align:right space not show bugs
     // https://github.com/facebook/react-native/issues/10218
@@ -114,7 +120,7 @@ export default function BasicInput({
             </View>
         </View>
     )
-}
+})
 
 
 const styles = StyleSheet.create({

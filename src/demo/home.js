@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import { View,Text, Touch,StyleSheet } from "react-native";
 import {NavigationEvents,SafeAreaView} from 'react-navigation';
 import {HeaderOption2} from '../ui/header/header'
+import Button from '../ui/button'
 
 function HomeScreen(props) {
     return (
@@ -13,21 +14,24 @@ function HomeScreen(props) {
                 }}
             ></NavigationEvents>
 
-            <Text style={s.text} onPress={e=>{
+            <Button title='Button' buttonStyle={s.text} onPress={e=>{
                 props.navigation.navigate('ButtonScreen')
-            }}>Button</Text>
-            <Text style={s.text} onPress={e=>{
+            }}></Button>
+            <Button title='AdvancedListScreen' buttonStyle={s.text} onPress={e=>{
                 props.navigation.navigate('AdvancedListScreen')
-            }}>AdvancedListScreen</Text>
-            <Text style={s.text} onPress={e=>{
+            }}></Button>
+            <Button title='StorageScreen' buttonStyle={s.text} onPress={e=>{
                 props.navigation.navigate('StorageScreen')
-            }}>StorageScreen</Text>
-            <Text style={s.text} onPress={e=>{
+            }}></Button>
+            <Button title='FileManagerScreen' buttonStyle={s.text} onPress={e=>{
                 props.navigation.navigate('FileManagerScreen')
-            }}>FileManagerScreen</Text>
-            <Text style={s.text} onPress={e=>{
+            }}></Button>
+            <Button title='FormScreen' buttonStyle={s.text} onPress={e=>{
                 props.navigation.navigate('FormScreen')
-            }}>FormScreen</Text>
+            }}></Button>
+            <Button title='TipScreen' buttonStyle={s.text} onPress={e=>{
+                props.navigation.navigate('TipScreen')
+            }}></Button>
         </SafeAreaView>
     )
 }
@@ -43,11 +47,9 @@ const s = StyleSheet.create({
     layout: {
         flex:1,
         padding: 20,
-        justifyContent: 'space-around',
-        alignItems: 'center'
     },
     text: {
-        fontSize: 26
+        marginBottom: 10
     }
 });
 
