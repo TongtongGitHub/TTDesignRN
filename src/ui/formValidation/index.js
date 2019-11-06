@@ -3,31 +3,31 @@ import { View } from 'react-native';
 import DefaultRules from './defaultRules';
 import Tip from '../tip'
 
-let formElements = [];
-
-function cloneChildren(children) {
-    return React.Children.map(children, (child, index) => {
-        if (child && child.props.name) {
-            formElements.push(child)
-            return React.cloneElement(child);
-        } else if (child && child.props.children) {
-            return React.cloneElement(child, child.props, cloneChildren(child.props.children));
-        } else {
-            return child;
-        }
-    })
-}
-
-function value() {
-    return formElements.map((element,index)=>{
-        return element.ref.current.value();
-    });
-}
-
 export default forwardRef(function FormValid({
     rules,
     children
 },ref){
+    let formElements = [];
+
+    function cloneChildren(children) {
+        return React.Children.map(children, (child, index) => {
+            if (child && child.props.name) {
+                formElements.push(child)
+                return React.cloneElement(child);
+            } else if (child && child.props.children) {
+                return React.cloneElement(child, child.props, cloneChildren(child.props.children));
+            } else {
+                return child;
+            }
+        })
+    }
+
+    function value() {
+        return formElements.map((element,index)=>{
+            return element.ref.current.value();
+        });
+    }
+
     useImperativeHandle(ref, () => ({
         valid: () => {
             let validResult = formElements.map((element,index)=>{

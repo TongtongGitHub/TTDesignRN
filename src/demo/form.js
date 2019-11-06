@@ -6,6 +6,7 @@ import {BasicInput, Switch} from '../ui/form';
 import Button from '../ui/button';
 import FormValid from '../ui/formValidation'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const rules = {
     input1: {
@@ -40,21 +41,23 @@ export default function FormScreen(props) {
     const InputRef4 = useRef();
     return (
         <SafeAreaView style={s.layout}>
+            <KeyboardAwareScrollView extraScrollHeight={40}>
             <FormValid ref={FromValidRef} rules={rules}>
                 <BasicInput ref={InputRef1} name='input1' placeholder='basic input'></BasicInput>
                 <BasicInput ref={InputRef2} name='input2' placeholder='disabled' editable={false} initValue='disabled'></BasicInput>
                 <BasicInput ref={InputRef3} name='input3' required={true} placeholder='Input with left view' leftView={(
                     <View><Text>Name:</Text></View>
                 )}></BasicInput>
-                <BasicInput ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
+                <BasicInput wrapStyle={{marginTop: 300}} ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
                     <View><Text>+86</Text></View>
                 )}></BasicInput>
             </FormValid>
-            <Button onPress={()=>{
+            <Button buttonStyle={{marginTop: 20}} onPress={()=>{
                 if(FromValidRef.current.valid()) {
                     
                 }
             }} title='Submit' type='main'></Button>
+            </KeyboardAwareScrollView>
         </SafeAreaView>
     )
 }
