@@ -9,6 +9,7 @@ import FileManagerScreen from '../demo/fileManager'
 import FormScreen from '../demo/form'
 import TipScreen from '../demo/tip'
 import ImageScreen from '../demo/image'
+import ListItem from '../demo/listItem'
 
 const AppNavigator = createStackNavigator({
     HomeScreen: {
@@ -34,6 +35,9 @@ const AppNavigator = createStackNavigator({
     },
     ImageScreen: {
         screen: ImageScreen
+    },
+    ListItem: {
+        screen: ListItem
     }
 },{
     initialRouteName: 'HomeScreen'

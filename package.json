@@ -1,7 +1,11 @@
 {
-  "name": "tt_design_rn",
-  "version": "0.0.1",
+  "name": "tt-design-rn",
+  "version": "0.1.0",
   "private": true,
+  "main": "src/index.js",
+  "author": {
+      "name": "liutongtong"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
