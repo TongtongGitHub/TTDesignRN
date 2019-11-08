@@ -38,6 +38,9 @@ function HomeScreen(props) {
             <Button title='ListItem' buttonStyle={s.text} onPress={e=>{
                 props.navigation.navigate('ListItem')
             }}></Button>
+            <Button title='Tab' buttonStyle={s.text} onPress={e=>{
+                props.navigation.navigate('Tab')
+            }}></Button>
         </SafeAreaView>
     )
 }
