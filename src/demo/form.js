@@ -7,6 +7,7 @@ import Button from '../ui/button';
 import FormValid from '../ui/formValidation'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import {Radio} from '../index'
 
 const rules = {
     input1: {
@@ -30,6 +31,9 @@ const rules = {
             },
             message: 'Please enter at least three characters.'
         },
+    },
+    agreement: {
+        required: 'please agree',
     }
 }
 
@@ -39,9 +43,10 @@ export default function FormScreen(props) {
     const InputRef2 = useRef();
     const InputRef3 = useRef();
     const InputRef4 = useRef();
+    const RadioRef = useRef();
     return (
         <SafeAreaView style={s.layout}>
-            <KeyboardAwareScrollView extraScrollHeight={40}>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps={'always'} extraScrollHeight={40}>
             <FormValid ref={FromValidRef} rules={rules}>
                 <BasicInput ref={InputRef1} name='input1' placeholder='basic input'></BasicInput>
                 <BasicInput ref={InputRef2} name='input2' placeholder='disabled' editable={false} initValue='disabled'></BasicInput>
@@ -51,6 +56,7 @@ export default function FormScreen(props) {
                 <BasicInput wrapStyle={{marginTop: 300}} ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
                     <View><Text>+86</Text></View>
                 )}></BasicInput>
+                <Radio ref={RadioRef} name='agreement' label='I agree I agree I agree I agree I agree '></Radio>
             </FormValid>
             <Button buttonStyle={{marginTop: 20}} onPress={()=>{
                 if(FromValidRef.current.valid()) {
