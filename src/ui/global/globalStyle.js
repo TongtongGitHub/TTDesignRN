@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
+import isIphoneX from './isIphoneX'
 
 export const Colors = {
     red: '#F24C3D',
@@ -15,3 +16,6 @@ export const Colors = {
     whiteD: '#f5f7fa'
 }
 export const BorderWidth = Platform.OS === 'ios'? 0.5:1;
+
+export const FixedTop = isIphoneX() ? 44 : (isStatusBarSolid ? 0 : (Platform.OS === 'android' ? 24 : 20));
+export const FixedBottom = isIphoneX() ? 34 : 0;

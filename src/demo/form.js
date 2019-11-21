@@ -7,7 +7,7 @@ import Button from '../ui/button';
 import FormValid from '../ui/formValidation'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import {Radio} from '../index'
+import {Radio, Select} from '../index'
 
 const rules = {
     input1: {
@@ -34,32 +34,43 @@ const rules = {
     },
     agreement: {
         required: 'please agree',
+    },
+    select1: {
+        required: 'please select'
     }
 }
 
 export default function FormScreen(props) {
-    const FromValidRef = useRef();
+    const FormValidRef = useRef();
     const InputRef1 = useRef();
     const InputRef2 = useRef();
     const InputRef3 = useRef();
     const InputRef4 = useRef();
     const RadioRef = useRef();
+    const SelectRef1 = useRef();
     return (
         <SafeAreaView style={s.layout}>
             <KeyboardAwareScrollView keyboardShouldPersistTaps={'always'} extraScrollHeight={40}>
-            <FormValid ref={FromValidRef} rules={rules}>
+            <FormValid ref={FormValidRef} rules={rules}>
                 <BasicInput ref={InputRef1} name='input1' placeholder='basic input'></BasicInput>
                 <BasicInput ref={InputRef2} name='input2' placeholder='disabled' editable={false} initValue='disabled'></BasicInput>
                 <BasicInput ref={InputRef3} name='input3' required={true} placeholder='Input with left view' leftView={(
                     <View><Text>Name:</Text></View>
                 )}></BasicInput>
-                <BasicInput wrapStyle={{marginTop: 300}} ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
+                <BasicInput ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
                     <View><Text>+86</Text></View>
                 )}></BasicInput>
+                <Select ref={SelectRef1} name='select1' type='default' label='default select' options={[{
+                    key:'1',value:'option1',checked: false},{
+                        key:'2',value:'option2',checked:true
+                    },{
+                        key:'3',value:'option3',checked:false
+                    }]}></Select>
                 <Radio ref={RadioRef} name='agreement' label='I agree I agree I agree I agree I agree '></Radio>
             </FormValid>
             <Button buttonStyle={{marginTop: 20}} onPress={()=>{
-                if(FromValidRef.current.valid()) {
+                if(FormValidRef.current.valid()) {
+                    console.log(FormValidRef.current.value());
                     
                 }
             }} title='Submit' type='main'></Button>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment, forwardRef,useImperativeHandle } from 'react';
-import { View } from 'react-native';
+import { View, Keyboard } from 'react-native';
 import DefaultRules from './defaultRules';
 import Tip from '../tip'
 
@@ -30,6 +30,7 @@ export default forwardRef(function FormValid({
 
     useImperativeHandle(ref, () => ({
         valid: () => {
+            Keyboard.dismiss();
             let validResult = formElements.map((element,index)=>{
                 let elementRef = element.ref;
                 let elementValue = element.ref.current.value();
@@ -66,6 +67,16 @@ export default forwardRef(function FormValid({
                 return false;
             }
             return true;
+        },
+
+        value: () => {
+            let values = {};
+            formElements.forEach(element=>{
+                let elementValue = element.ref.current.value();
+                let elementName = element.props.name;
+                values[elementName] = elementValue;
+            })
+            return values;
         }
       }));
     return (<Fragment>
