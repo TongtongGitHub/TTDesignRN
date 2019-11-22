@@ -7,7 +7,7 @@ import Button from '../ui/button';
 import FormValid from '../ui/formValidation'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import {Radio, Select} from '../index'
+import {Radio, Select, DatePicker} from '../index'
 
 const rules = {
     input1: {
@@ -37,6 +37,12 @@ const rules = {
     },
     select1: {
         required: 'please select'
+    },
+    date1: {
+        required: 'please select date'
+    },
+    date2: {
+        required: 'please select time'
     }
 }
 
@@ -48,6 +54,8 @@ export default function FormScreen(props) {
     const InputRef4 = useRef();
     const RadioRef = useRef();
     const SelectRef1 = useRef();
+    const Date1 = useRef();
+    const Date2 = useRef();
     return (
         <SafeAreaView style={s.layout}>
             <KeyboardAwareScrollView keyboardShouldPersistTaps={'always'} extraScrollHeight={40}>
@@ -60,12 +68,14 @@ export default function FormScreen(props) {
                 <BasicInput ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
                     <View><Text>+86</Text></View>
                 )}></BasicInput>
-                <Select ref={SelectRef1} name='select1' type='default' label='default select' options={[{
+                <Select required={true} ref={SelectRef1} name='select1' type='default' label='default select' options={[{
                     key:'1',value:'option1',checked: false},{
                         key:'2',value:'option2',checked:true
                     },{
                         key:'3',value:'option3',checked:false
                     }]}></Select>
+                <DatePicker ref={Date1} name='date1' required={true}></DatePicker>
+                <DatePicker ref={Date2} name='date2' required={true} mode='time' label={'Time'}></DatePicker>
                 <Radio ref={RadioRef} name='agreement' label='I agree I agree I agree I agree I agree '></Radio>
             </FormValid>
             <Button buttonStyle={{marginTop: 20}} onPress={()=>{

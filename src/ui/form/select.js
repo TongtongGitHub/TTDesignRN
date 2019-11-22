@@ -15,7 +15,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { Colors, BorderWidth, FixedBottom } from '../global/globalStyle';
 
 let tempList = null;
-export default forwardRef(function Radio ({
+export default forwardRef(function Select ({
+    required = false,
     type = 'default', // default, custom
     label = '',
     options = [], // [{key: string,value: string,checked: bool}]
@@ -42,7 +43,7 @@ export default forwardRef(function Radio ({
                 console.log(tempList);
                 setShowOptions(true);
             }} style={[styles.layout]}>
-                <Text style={{fontSize:16}}>{label}</Text>
+                <Text style={{fontSize:16}}>{required && <Text style={styles.required}>* </Text>}{label}</Text>
                 <View style={{flexDirection:'row'}}>
                     <Text style={{marginRight: 10}}>{
                         selected.map(item=>{return item.value}).join(',')
@@ -62,6 +63,7 @@ export default forwardRef(function Radio ({
                         setOptionList(tempList);
                         setShowOptions(false);
                     }} style={[styles.popWrap]}>
+                    </TouchableOpacity>
                     <View style={styles.content}>
                         <View style={styles.titleWrap}>
                             <Text style={[styles.titText]} onPress={()=> {
@@ -103,7 +105,6 @@ export default forwardRef(function Radio ({
                             })}
                         </ScrollView>
                     </View>
-                </TouchableOpacity>
             </Modal>
         </Fragment>
     )
@@ -140,13 +141,16 @@ const styles = StyleSheet.create({
     popWrap: {
         backgroundColor:'rgba(0,0,0,0.5)',
         flex:1,
-        marginBottom: FixedBottom
     },
     content: {
         position:'absolute',
         bottom: 0,
         left:0,
         right:0,
-        backgroundColor:'#fff'
+        backgroundColor:'#fff',
+        paddingBottom: FixedBottom
+    },
+    required: {
+        color: '#f24c3d'
     },
 });
