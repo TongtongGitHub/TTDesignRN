@@ -7,7 +7,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import TopView from './ui/topView'
+import {TopView} from '../design/index'
 
 import AppContainer from './router'
 

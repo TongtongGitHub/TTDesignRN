@@ -1,8 +1,16 @@
 import React, {Fragment} from "react";
 import { View,Text, Touch,StyleSheet } from "react-native";
 import {NavigationEvents,SafeAreaView} from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header'
-import Button from '../ui/button'
+import {
+    Radio, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    AdvancedList,
+    HeaderOption2
+} from '../../design/index'
 
 function HomeScreen(props) {
     return (

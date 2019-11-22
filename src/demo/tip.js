@@ -1,11 +1,20 @@
 import React, {Fragment} from "react";
 import { View,Text,StyleSheet} from "react-native";
 import { SafeAreaView } from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header';
-import Button from '../ui/button';
 import Icon from 'react-native-vector-icons/Ionicons'
-import Tip from '../ui/tip'
-
+import {
+    Tip, 
+    SwipeAction, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    AdvancedList,
+    ImagePlaceHolder,
+    ImageGallery,
+    HeaderOption2
+} from '../../design/index'
 export default function TipScreen(props) {
     return (
         <SafeAreaView style={s.layout}>

@@ -1,8 +1,16 @@
 import React, {Fragment} from "react";
 import { View,Text,StyleSheet} from "react-native";
 import { SafeAreaView } from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header';
-import Button from '../ui/button';
+import {
+    Radio, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    AdvancedList,
+    HeaderOption2
+} from '../../design/index'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 export default function ButtonScreen(props) {

@@ -1,8 +1,19 @@
 import React, {Fragment} from "react";
 import { View,Text,StyleSheet} from "react-native";
 import { SafeAreaView } from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header';
-import {Tab} from '../index'
+import {
+    Tab, 
+    SwipeAction, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    AdvancedList,
+    ImagePlaceHolder,
+    ImageGallery,
+    HeaderOption2
+} from '../../design/index'
 
 export default function TabDemo(props) {
     return (

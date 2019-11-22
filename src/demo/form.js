@@ -1,13 +1,17 @@
 import React, {useRef} from "react";
 import { View,Text,StyleSheet} from "react-native";
 import { SafeAreaView } from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header';
-import {BasicInput, Switch} from '../ui/form';
-import Button from '../ui/button';
-import FormValid from '../ui/formValidation'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import {Radio, Select, DatePicker} from '../index'
+import {
+    Radio, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    HeaderOption2
+} from '../../design/index'
 
 const rules = {
     input1: {
@@ -59,15 +63,15 @@ export default function FormScreen(props) {
     return (
         <SafeAreaView style={s.layout}>
             <KeyboardAwareScrollView keyboardShouldPersistTaps={'always'} extraScrollHeight={40}>
-            <FormValid ref={FormValidRef} rules={rules}>
-                <BasicInput ref={InputRef1} name='input1' placeholder='basic input'></BasicInput>
-                <BasicInput ref={InputRef2} name='input2' placeholder='disabled' editable={false} initValue='disabled'></BasicInput>
-                <BasicInput ref={InputRef3} name='input3' required={true} placeholder='Input with left view' leftView={(
+            <FormValidation ref={FormValidRef} rules={rules}>
+                <Input ref={InputRef1} name='input1' placeholder='basic input'></Input>
+                <Input ref={InputRef2} name='input2' placeholder='disabled' editable={false} initValue='disabled'></Input>
+                <Input ref={InputRef3} name='input3' required={true} placeholder='Input with left view' leftView={(
                     <View><Text>Name:</Text></View>
-                )}></BasicInput>
-                <BasicInput ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
+                )}></Input>
+                <Input ref={InputRef4} name='input4' required={true} placeholder='Input with right view' rightView={(
                     <View><Text>+86</Text></View>
-                )}></BasicInput>
+                )}></Input>
                 <Select required={true} ref={SelectRef1} name='select1' type='default' label='default select' options={[{
                     key:'1',value:'option1',checked: false},{
                         key:'2',value:'option2',checked:true
@@ -77,7 +81,7 @@ export default function FormScreen(props) {
                 <DatePicker ref={Date1} name='date1' required={true}></DatePicker>
                 <DatePicker ref={Date2} name='date2' required={true} mode='time' label={'Time'}></DatePicker>
                 <Radio ref={RadioRef} name='agreement' label='I agree I agree I agree I agree I agree '></Radio>
-            </FormValid>
+            </FormValidation>
             <Button buttonStyle={{marginTop: 20}} onPress={()=>{
                 if(FormValidRef.current.valid()) {
                     console.log(FormValidRef.current.value());

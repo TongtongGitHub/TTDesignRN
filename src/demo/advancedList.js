@@ -1,9 +1,16 @@
 import React, {Fragment} from "react";
 import { View,Text,StyleSheet} from "react-native";
 import { SafeAreaView } from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header';
-import AdvancedList from '../ui/advancedList';
-import Icon from 'react-native-vector-icons/Ionicons'
+import {
+    Radio, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    AdvancedList,
+    HeaderOption2
+} from '../../design/index'
 
 export default function AdvancedListScreen(props) {
     return (

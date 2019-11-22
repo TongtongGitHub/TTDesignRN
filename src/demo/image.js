@@ -1,12 +1,19 @@
 import React, {useRef} from "react";
 import { View,TouchableOpacity,StyleSheet} from "react-native";
 import { SafeAreaView } from 'react-navigation';
-import {HeaderOption2} from '../ui/header/header';
-import Button from '../ui/button';
+import {
+    Radio, 
+    Select, 
+    DatePicker,
+    Input,
+    Button,
+    FormValidation,
+    AdvancedList,
+    ImagePlaceHolder,
+    ImageGallery,
+    HeaderOption2
+} from '../../design/index'
 import Icon from 'react-native-vector-icons/Ionicons'
-import ImagePlaceHolder from '../ui/imagePlaceHolder';
-import ImageGallery from '../ui/imageGallery'
-import FastImage from 'react-native-fast-image'
 
 export default function ImageScreen(props) {
     let imageList = [
