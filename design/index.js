@@ -22,8 +22,6 @@ import Header from './ui/header/header'
 import HeaderOption1 from './ui/header/headerOption1'
 import HeaderOption2 from './ui/header/headerOption2'
 
-import FileManager from './lib/fileManager'
-import Storage from './lib/storage'
 import Tool from './lib/tool'
 export {
     AdvancedList,
@@ -47,7 +45,5 @@ export {
     Header,
     HeaderOption1,
     HeaderOption2,
-    FileManager,
-    Storage,
     Tool
 }
